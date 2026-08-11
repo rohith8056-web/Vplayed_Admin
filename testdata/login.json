@@ -1,0 +1,75 @@
+{
+
+    "TC01":{
+        "assert":"Log in to your Account"
+    },
+
+    "TC02":{
+        "assert":"Nice to see you! Sign in now & lets get started."
+    },
+
+    "TC03":{
+        "assert":"Forgot Password?"
+    },
+
+    "TC04":{
+        "assert":"Email ID"
+    },
+
+    "TC05":{
+        "assert":"Password"
+    },
+
+    "TC06":{
+        "assert1":"Email Address is required",
+        "assert2":"Password is required"
+    },
+
+    "TC07":{
+        "password":"Welcme@123",
+        "assert":"Email Address is required"
+    },
+
+    "TC08":{
+        "email":"admingsvplayed@gmail.com",
+        "assert":"Password is required"
+    },
+
+    "TC09":{
+        "email":"admingsvplayd@gmail.com",
+        "password":"Welcome@123",
+        "assert":"The email you have given is not registered with us, Please try again or create a new account"
+    },
+
+    "TC10":{
+        "email":"admingsvplayed@gmail.com",
+        "password":"Welcme@123",
+        "assert":"Invalid Credential"
+    },
+
+    "TC11":{
+        "email":"dmingsvplayed@gmail.com#dfdfg",
+        "password":"Welcome@123",
+        "assert":"Email must be a valid email address"
+    },
+
+    "TC12":{
+        "email":"admingsvpla",
+        "assert":"Please enter a valid email address"
+    },
+    
+    "TC13":{
+        "email":"admingsvplayed@gmail.com",
+        "password":"Welcome@123",
+        "assert":"Good, You have logged in successfully"
+    },
+
+    "TC14":{
+        "email":"admingsvplayed@gmail.com",
+        "password":"Welcome@123"
+    }
+    
+}
+    
+
+

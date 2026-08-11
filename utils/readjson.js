@@ -1,0 +1,59 @@
+import fs from "fs"
+
+export function readJson(filepath)
+{
+    
+    //console.log("Reading JSON File");
+
+    // read the file as text
+    const fileContent=fs.readFileSync(filepath,"utf-8")
+
+    const data=JSON.parse(fileContent)
+
+    return data
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import fs from "fs";
+
+export async function readJson(filepath)
+{
+
+    // read the file as text
+    const fileContent=await fs.promises.readFile(filepath,"utf-8")
+
+    const data=JSON.parse(fileContent)
+
+    return data
+
+}*/
