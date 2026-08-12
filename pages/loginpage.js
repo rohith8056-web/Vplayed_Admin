@@ -1,8 +1,10 @@
+import { Basepage } from "./basepage.js";
 
-export class SigninPage {
+export class SigninPage extends Basepage {
 
   constructor(page) 
   {
+    super(page);
     this.page = page;
     this.loginPageHeading = page.getByText("Log in to your Account");
     this.signInIntroText = page.getByText("Nice to see you! Sign in now & lets get started.");
@@ -17,37 +19,12 @@ export class SigninPage {
     this.toastContainer = page.locator("#toast-container");
     this.successToast = page.locator("//div[@class='ng-tns-c1-1 ng-star-inserted ng-trigger ng-trigger-flyInOut ngx-toastr toast-success']");
     this.passwordToggle = page.locator("//div[@Class='show-pass']");
-    this.forgotPasswordLink = page.getByText("Forgot Password?");
-    this.forgotPasswordHeading = page.getByText("Forgot your password?");
-    this.forgotPasswordInstructions = page.locator("//p[@class='sign-in-desc']");
-  }
-
-  async openLoginPage() {
-    await this.page.goto("https://admin-staginggs.vplayed.com");
   }
 
   /*async openForgotPasswordPage() {
     await this.page.goto("https://admin-staginggs.vplayed.com/forgot-password");
   } */
 
-  async fillEmail(email) {
-    await this.emailInput.fill(email);
-  }
-
-  async fillPassword(password) {
-    await this.passwordInput.fill(password);
-  }
-
-  async submit() {
-    await this.signInButton.waitFor({ state: "visible" });
-    await this.signInButton.click();
-  }
-
-  async login(email, password) {
-    await this.fillEmail(email);
-    await this.fillPassword(password);
-    await this.submit();
-  }
 
   async togglePasswordVisibility() {
     await this.passwordToggle.first().click();

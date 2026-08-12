@@ -1,0 +1,65 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: admanagement.spec.js >> Functional Testing >> TC-27: Verify when user click on newadbtn then create new add page is displayed
+- Location: tests/admanagement.spec.js:25:3
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded while running "beforeEach" hook.
+```
+
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('xpath=(//a[normalize-space()=\'Super Admin\'])[1]')
+
+```
+
+# Test source
+
+```ts
+  1  | import { Basepage } from "./basepage.js";
+  2  | export class admanagement extends Basepage {
+  3  | 
+  4  |   constructor(page) 
+  5  |   {
+  6  | 
+  7  |     super(page);
+  8  |     this.page = page;
+  9  |     this.superadminbtn = page.locator("(//a[normalize-space()='Super Admin'])[1]");
+  10 |     this.addmanagementbtn = page.locator("//a[normalize-space()='Ad Management']");
+  11 |     this.heading = page.locator("(//h4[normalize-space()='Ad Management'])[1]");
+  12 |     this.newadbtn = page.locator("//button[@class='mat-focus-indicator mat-ripple flex hover-shadow button is-icon blue small is-space mat-button mat-button-base ng-star-inserted']//span[@class='mat-button-wrapper']");
+  13 |     this.createnewadsheading = page.locator("//h3[normalize-space()='Create New Ads']");
+  14 |     this.createnewadsubheading = page.locator("(//h4[normalize-space()='Create Ad'])[1]");
+  15 |     this.creatednewadssubtext = page.locator("//span[@class='normal']");
+  16 |     this.adnameheading = page.locator("(//h4[normalize-space()='AD Name*'])[1]");
+  17 |     this.adnameplaceholder = page.locator("//input[@id='mat-input-20']");
+  18 |     this.adurlheading = page.locator("(//h4[normalize-space()='AD Url*'])[1]");
+  19 |     this.adurlplaceholder = page.locator("(//textarea[@id='mat-input-21'])[1]");
+  20 |     this.supportplatformheading = page.locator("(//h4[normalize-space()='Support Platform*'])[1]");
+  21 |     this.adsupportplatformplaceholder = page.locator("(//span[@class='mat-select-placeholder mat-select-min-line ng-tns-c21-64 ng-star-inserted'])[1]");
+  22 |     this.orientationheading = page.locator("(//h4[normalize-space()='Orientation*'])[1]");
+  23 |     this.adorientationplaceholder = page.locator("(//span[@class='mat-select-placeholder mat-select-min-line ng-tns-c21-66 ng-star-inserted'])[1]");
+  24 |   }
+  25 | 
+  26 |   async superadminclick() {
+> 27 |     await this.superadminbtn.click();
+     |                              ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  28 |   }
+  29 | 
+  30 |   async newadclick() {
+  31 |     await this.newadbtn.click();
+  32 |   }
+  33 |   
+  34 | 
+  35 | 
+  36 | }
+```

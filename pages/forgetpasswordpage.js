@@ -1,9 +1,12 @@
-import { SigninPage } from "./loginpage";
+import { SigninPage } from "./loginpage.js";
 export class forgetpassword extends SigninPage {
 
   constructor(page) 
   {
     super(page);
+    this.forgotPasswordLink = page.getByText("Forgot Password?");
+    this.forgotPasswordHeading = page.getByText("Forgot your password?");
+    this.forgotPasswordInstructions = page.locator("//p[@class='sign-in-desc']");
     this.forgotPasswordHeading = page.getByText("Forgot your password?");
     this.forgotPasswordInstructions = page.locator("//p[@class='sign-in-desc']");
     this.emailInputfield = page.locator("//label[@for='phoneEmail']");
@@ -21,6 +24,10 @@ export class forgetpassword extends SigninPage {
     this.gobacktosignin = page.locator("//p[normalize-space(@class)='back-to text-center']");
     this.forgetpasswordsigninclick = page.locator("//span[@class='cursor forgot-pass underline']");
 
+  }
+
+  async openLoginPage() {
+    await this.page.goto("https://admin-staginggs.vplayed.com");
   }
 
   async resendcodeclick() {

@@ -1,5 +1,6 @@
 import { test as base } from "@playwright/test";
 import { readJson } from "../utils/readjson.js";
+import { Basepage } from "../pages/basepage.js";
 
 export const test = base.extend({
   logindatafixture: async ({}, use) => {
