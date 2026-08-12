@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test";
-import { SigninPage } from "../pages/loginpage";
+import { SigninPage } from "../pages/loginpage.js";
 import { test } from "../fixtures/data.fixture.js";
 
 let signinPage; 
@@ -71,7 +71,7 @@ test.describe("Functional Testing", () => {
 
   test("TC-13: Logs in successfully with valid credentials", async ({ page, logindatafixture }) => {
     await signinPage.login(logindatafixture.TC13.email, logindatafixture.TC13.password);
-    await page.waitForTimeout(9000);
+    await page.waitForTimeout(3000);
     await expect(signinPage.successToast).toContainText(logindatafixture.TC13.assert);
   });
 

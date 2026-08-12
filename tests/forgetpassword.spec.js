@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test";
-import { forgetpassword } from "../pages/forgetpasswordPage";
+import { forgetpassword } from "../pages/forgetpasswordpage.js";
 import { test } from "../fixtures/data.fixture.js";
 
 let Forgetpassword;

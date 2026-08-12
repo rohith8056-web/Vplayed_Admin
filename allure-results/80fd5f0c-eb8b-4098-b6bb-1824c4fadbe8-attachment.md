@@ -1,0 +1,97 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: admanagement.spec.js >> Functional Testing >> TC-27: Verify when user click on newadbtn then create new add page is displayed
+- Location: tests/admanagement.spec.js:25:3
+
+# Error details
+
+```
+Error: expect(locator).toHaveAttribute(expected) failed
+
+Locator:  locator('//input[@id=\'mat-input-11\']')
+Expected: "Name of the Ad"
+Received: ""
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveAttribute" with timeout 5000ms
+  - waiting for locator('//input[@id=\'mat-input-11\']')
+    14 × locator resolved to <input matinput="" id="mat-input-11" aria-invalid="false" aria-required="false" _ngcontent-serverapp-c239="" data-placeholder="Discover by ad name" class="mat-input-element mat-form-field-autofill-control ng-tns-c20-29 cdk-text-field-autofill-monitored"/>
+       - unexpected value "null"
+
+```
+
+```yaml
+- textbox "Discover by ad name"
+```
+
+# Test source
+
+```ts
+  1  | import { expect } from "@playwright/test";
+  2  | import { admanagement } from "../pages/admanagementpage.js";
+  3  | import { test } from "../fixtures/data.fixture.js";
+  4  | 
+  5  | let adManagementPage; 
+  6  | 
+  7  | test.beforeEach(async ({ page }) => {
+  8  |     adManagementPage = new admanagement(page);
+  9  |     await adManagementPage.openLoginPage();
+  10 |     await adManagementPage.login("admingsvplayed@gmail.com", "Welcome@123");
+  11 |     await adManagementPage.superadminclick();
+  12 |   });
+  13 | 
+  14 | test.describe("Functional Testing", () => {
+  15 |   
+  16 | test("TC-26: Verify that admanagement page is displayed", async ({ page }) => {
+  17 | 
+  18 |     await adManagementPage.addmanagementbtn.click();
+  19 |     //await page.waitForTimeout(5000);
+  20 |     await expect(adManagementPage.page).toHaveURL("https://admin-staginggs.vplayed.com/vplayedqa/super-admin/ad-management");
+  21 |     await expect(adManagementPage.heading).toBeVisible();
+  22 |     await expect(adManagementPage.heading).toHaveText('Ad Management');
+  23 |   });
+  24 | 
+  25 |   test("TC-27: Verify when user click on newadbtn then create new add page is displayed", async ({ page }) => {
+  26 | 
+  27 |     await adManagementPage.addmanagementbtn.click();
+  28 |     //await page.waitForTimeout(5000);
+  29 |     await adManagementPage.newadclick();
+  30 |     //await page.waitForTimeout(5000);
+  31 |     await expect(adManagementPage.createnewadsheading).toBeVisible();
+  32 |     await expect(adManagementPage.createnewadsheading).toHaveText('Create New Ads');
+  33 |     await expect(adManagementPage.creatednewadssubtext).toBeVisible();
+  34 |     await expect(adManagementPage.creatednewadssubtext).toHaveText('Add multimedia VAST ads source here, The added ads will be playing as preroll, midroll, post roll');
+  35 |     await expect(adManagementPage.createnewadsubheading).toBeVisible();
+  36 |     await expect(adManagementPage.createnewadsubheading).toHaveText('Create Ad');
+  37 |     await expect(adManagementPage.adnameheading).toBeVisible();
+  38 |     await expect(adManagementPage.adnameheading).toHaveText('AD Name*');
+  39 |     //await expect(adManagementPage.adnameplaceholder).toBeVisible();
+> 40 |     await expect(adManagementPage.adnameplaceholder).toHaveAttribute('placeholder', 'Name of the Ad');
+     |                                                      ^ Error: expect(locator).toHaveAttribute(expected) failed
+  41 |     await expect(adManagementPage.adurlheading).toBeVisible();
+  42 |     await expect(adManagementPage.adurlheading).toHaveText('AD Url*');
+  43 |     await expect(adManagementPage.adurlplaceholder).toBeVisible();
+  44 |     await expect(adManagementPage.adurlplaceholder).toHaveText('Enter Ad URL');
+  45 |     await expect(adManagementPage.supportplatformheading).toBeVisible();
+  46 |     await expect(adManagementPage.supportplatformheading).toHaveText('Support Platform*');
+  47 |     await expect(adManagementPage.adsupportplatformplaceholder).toBeVisible();
+  48 |     await expect(adManagementPage.adsupportplatformplaceholder).toHaveText('Support Platform');
+  49 |     await expect(adManagementPage.orientationheading).toBeVisible();
+  50 |     await expect(adManagementPage.orientationheading).toHaveText('Orientation*');
+  51 |     await expect(adManagementPage.adorientationplaceholder).toBeVisible();
+  52 |     await expect(adManagementPage.adorientationplaceholder).toHaveText('Orientation');
+  53 |   });
+  54 | 
+  55 | 
+  56 | 
+  57 |   
+  58 |   
+  59 | });
+```
