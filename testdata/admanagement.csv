@@ -4,4 +4,4 @@ TC28,null,null,null,null,Ad Name is required,Ad Url is required,Support platform
 TC29,Test,null,null,null,null,Ad Url is required,Support platform is required,Orientation Type is required,null
 TC30,Test,https://admin-staginggs.vplayed.com/vplayedqa/super-admin/ad-management?tab=0,null,null,null,null,Support platform is required,Orientation Type is required,null
 TC31,Test,https://admin-staginggs.vplayed.com/vplayedqa/super-admin/ad-management?tab=0,Web,null,null,null,null,Orientation Type is required,null
-TC31,Test,https://admin-staginggs.vplayed.com/vplayedqa/super-admin/ad-management?tab=0,Both,Portrait,null,null,null,null,null
+TC31,Test,https://admin-staginggs.vplayed.com/vplayedqa/super-admin/ad-management?tab=0,Both,Portrait, Vast Ad created successfully,null,null,null,null
