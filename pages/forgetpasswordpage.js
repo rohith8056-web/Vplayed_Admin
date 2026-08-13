@@ -4,7 +4,7 @@ export class forgetpassword extends SigninPage {
   constructor(page) 
   {
     super(page);
-    this.forgotPasswordLink = page.getByText("Forgot Password?");
+    this.forgotPasswordLink = page.getByText("Forgot Password?"); // also added this locator in basepage.js for reusability
     this.forgotPasswordHeading = page.getByText("Forgot your password?");
     this.forgotPasswordInstructions = page.locator("//p[@class='sign-in-desc']");
     this.forgotPasswordHeading = page.getByText("Forgot your password?");

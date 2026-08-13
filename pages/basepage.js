@@ -7,6 +7,7 @@ export class Basepage {
     this.emailInput = page.locator('//*[@id="body"]/app-root/div/app-gud-sign-in/div/div/form/div[1]/div/label');
     this.passwordInput = page.locator("#password");
     this.signInButton = page.getByRole("button", { name: "Sign In" }).first();
+    this.forgotPasswordLink = page.getByText("Forgot Password?");
   }
 
   async openLoginPage() {

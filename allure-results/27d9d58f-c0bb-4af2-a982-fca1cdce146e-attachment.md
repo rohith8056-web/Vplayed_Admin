@@ -1,0 +1,160 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: admanagement/admanagement.spec.js >> Functional Testing >> TC-26: Verify that admanagement page is displayed
+- Location: tests/admanagement/admanagement.spec.js:16:1
+
+# Error details
+
+```
+Error: expect(locator).toHaveText(expected) failed
+
+Locator:  locator('xpath=(//h4[normalize-space()=\'Ad Management\'])[1]')
+Expected: "Create New Ads"
+Received: " Ad Management "
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveText" with timeout 5000ms
+  - waiting for locator('xpath=(//h4[normalize-space()=\'Ad Management\'])[1]')
+    14 × locator resolved to <h4 _ngcontent-serverapp-c239="" class="flex align-items-center"> Ad Management </h4>
+       - unexpected value " Ad Management "
+
+```
+
+```yaml
+- heading "Ad Management" [level=4]
+```
+
+# Test source
+
+```ts
+  1   | import { expect } from "@playwright/test";
+  2   | import { admanagement } from "../../pages/admanagementpage.js";
+  3   | import { test } from "../../fixtures/data.fixture.js";
+  4   | 
+  5   | let adManagementPage; 
+  6   | 
+  7   | test.beforeEach(async ({ page }) => {
+  8   |     adManagementPage = new admanagement(page);
+  9   |     await adManagementPage.openLoginPage();
+  10  |     await adManagementPage.login("admingsvplayed@gmail.com", "Welcome@123");
+  11  |     await adManagementPage.superadminclick();
+  12  |   });
+  13  | 
+  14  | test.describe("Functional Testing", () => {
+  15  |   
+  16  | test("TC-26: Verify that admanagement page is displayed", async ({ page, admanagementdatafixture }) => {
+  17  | 
+  18  |     await adManagementPage.addmanagementbtn.click();
+  19  |     await page.waitForTimeout(2000);
+  20  |     await expect(adManagementPage.page).toHaveURL("https://admin-staginggs.vplayed.com/vplayedqa/super-admin/ad-management");
+  21  |     await expect(adManagementPage.heading).toBeVisible();
+> 22  |     await expect(adManagementPage.heading).toHaveText(admanagementdatafixture[0].assert1);
+      |                                            ^ Error: expect(locator).toHaveText(expected) failed
+  23  |   });
+  24  | 
+  25  |   test("TC-27: Verify when user click on newadbtn then create new add page is displayed", async ({ page }) => {
+  26  | 
+  27  |     await adManagementPage.addmanagementbtn.click();
+  28  |     //await page.waitForTimeout(5000);
+  29  |     await adManagementPage.newadclick();
+  30  |     //await page.waitForTimeout(5000);
+  31  |     await expect(adManagementPage.createnewadsheading).toBeVisible();
+  32  |     await expect(adManagementPage.createnewadsheading).toHaveText('Create New Ads');
+  33  |     await expect(adManagementPage.creatednewadssubtext).toBeVisible();
+  34  |     await expect(adManagementPage.creatednewadssubtext).toHaveText('Add multimedia VAST ads source here, The added ads will be playing as preroll, midroll, post roll');
+  35  |     await expect(adManagementPage.createnewadsubheading).toBeVisible();
+  36  |     await expect(adManagementPage.createnewadsubheading).toHaveText('Create Ad');
+  37  |     await expect(adManagementPage.adnameheading).toBeVisible();
+  38  |     await expect(adManagementPage.adnameheading).toHaveText('AD Name*');
+  39  |     await adManagementPage.adnameplaceholderclick();
+  40  |     await expect(adManagementPage.adnameplaceholder).toBeVisible();
+  41  |     await expect(adManagementPage.adnameplaceholder).toHaveAttribute('placeholder', 'Name of the Ad');
+  42  |     await expect(adManagementPage.adurlheading).toBeVisible();
+  43  |     await expect(adManagementPage.adurlheading).toHaveText('AD Url*');
+  44  |     await adManagementPage.adurlplaceholderclick();
+  45  |     await expect(adManagementPage.adurlplaceholder).toBeVisible();
+  46  |     await expect(adManagementPage.adurlplaceholder).toHaveAttribute('placeholder', 'Enter Ad URL');
+  47  |     await expect(adManagementPage.supportplatformheading).toBeVisible();
+  48  |     await expect(adManagementPage.supportplatformheading).toHaveText('Support Platform*');
+  49  |     await expect(adManagementPage.adsupportplatformplaceholder).toBeVisible();
+  50  |     await expect(adManagementPage.adsupportplatformplaceholder).toHaveText('Support Platform');
+  51  |     await expect(adManagementPage.orientationheading).toBeVisible();
+  52  |     await expect(adManagementPage.orientationheading).toHaveText('Orientation*');
+  53  |     await expect(adManagementPage.adorientationplaceholder).toBeVisible();
+  54  |     await expect(adManagementPage.adorientationplaceholder).toHaveText('Orientation Type');
+  55  |   });
+  56  | 
+  57  |   test("TC-28: Verify that error validatios is displaying when the user tap on the save button in create new ad page without entering the details", async ({ page, admanagementdatafixture }) => {
+  58  | 
+  59  |    await adManagementPage.addmanagementbtn.click();
+  60  |    await adManagementPage.newadclick();
+  61  |    await adManagementPage.savebtnclick();
+  62  |    await expect(adManagementPage.adnameerror).toBeVisible();
+  63  |    await expect(adManagementPage.adnameerror).toHaveText(admanagementdatafixture[1].assert1);
+  64  |    await expect(adManagementPage.adurlerror).toBeVisible();
+  65  |    await expect(adManagementPage.adurlerror).toHaveText(admanagementdatafixture[1].assert2);
+  66  |    await expect(adManagementPage.supportplatformerror).toBeVisible();
+  67  |    await expect(adManagementPage.supportplatformerror).toHaveText(admanagementdatafixture[1].assert3);
+  68  |    await expect(adManagementPage.orientationerror).toBeVisible();
+  69  |    await expect(adManagementPage.orientationerror).toHaveText(admanagementdatafixture[1].assert4);
+  70  |   });
+  71  | 
+  72  |   test("TC-29: when the user enter the adname and click on save the error should show in remaining 3 feilds", async ({ page, admanagementdatafixture }) => {
+  73  | 
+  74  |    await adManagementPage.addmanagementbtn.click();
+  75  |    await adManagementPage.newadclick();
+  76  |    await adManagementPage.adnamefill(admanagementdatafixture[2].adname +Date.now());
+  77  |    await adManagementPage.savebtnclick();
+  78  |    await expect(adManagementPage.adurlerror).toBeVisible();
+  79  |    await expect(adManagementPage.adurlerror).toHaveText(admanagementdatafixture[2].assert2);
+  80  |    await expect(adManagementPage.supportplatformerror).toBeVisible();
+  81  |    await expect(adManagementPage.supportplatformerror).toHaveText(admanagementdatafixture[2].assert3);
+  82  |    await expect(adManagementPage.orientationerror).toBeVisible();
+  83  |    await expect(adManagementPage.orientationerror).toHaveText(admanagementdatafixture[2].assert4);
+  84  |    
+  85  |   });
+  86  | 
+  87  |   test("TC-30: when the user enter the adname,url and click on save the error should show in remaining 2 feilds", async ({ page, admanagementdatafixture }) => {
+  88  | 
+  89  |    await adManagementPage.addmanagementbtn.click();
+  90  |    await adManagementPage.newadclick();
+  91  |    await adManagementPage.adnamefill(admanagementdatafixture[3].adname +Date.now());
+  92  |    await adManagementPage.adurlfill(admanagementdatafixture[3].adurl);
+  93  |    await adManagementPage.savebtnclick();
+  94  |    await expect(adManagementPage.supportplatformerror).toBeVisible();
+  95  |    await expect(adManagementPage.supportplatformerror).toHaveText(admanagementdatafixture[3].assert3);
+  96  |    await expect(adManagementPage.orientationerror).toBeVisible();
+  97  |    await expect(adManagementPage.orientationerror).toHaveText(admanagementdatafixture[3].assert4);
+  98  |    
+  99  |   });
+  100 | 
+  101 |   test("TC-31: when the user enter the adname,url,support platform and click on save the error should show in remaining 1 feilds", async ({ page, admanagementdatafixture }) => {
+  102 | 
+  103 |    await adManagementPage.addmanagementbtn.click();
+  104 |    await adManagementPage.newadclick();
+  105 |    await adManagementPage.adnamefill(admanagementdatafixture[4].adname +Date.now());
+  106 |    await adManagementPage.adurlfill(admanagementdatafixture[4].adurl);
+  107 |    await adManagementPage.supportplatformfill(admanagementdatafixture[4].supportplatform);
+  108 |    await adManagementPage.savebtnclick();
+  109 |    await expect(adManagementPage.orientationerror).toBeVisible();
+  110 |    await expect(adManagementPage.orientationerror).toHaveText(admanagementdatafixture[4].assert4);
+  111 |    
+  112 |   });
+  113 | 
+  114 |   test("TC-32: when the user enter the adname,url,support platform and orientation click on save then add should be saved and success should be displayed", async ({ page, admanagementdatafixture }) => {
+  115 | 
+  116 |    await adManagementPage.addmanagementbtn.click();
+  117 |    await adManagementPage.newadclick();
+  118 |    await adManagementPage.adnamefill(admanagementdatafixture[5].adname +Date.now());
+  119 |    await adManagementPage.adurlfill(admanagementdatafixture[5].adurl);
+  120 |    await adManagementPage.supportplatformfill(admanagementdatafixture[5].supportplatform);
+  121 |    await adManagementPage.orientationfill(admanagementdatafixture[5].orientation);
+  122 |    await adManagementPage.savebtnclick();
+```
