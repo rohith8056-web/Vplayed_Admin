@@ -22,9 +22,16 @@ export class admanagement extends Basepage {
     this.supportplatformheading = page.locator("(//h4[normalize-space()='Support Platform*'])[1]");
     // Use a relative locator for the support platform placeholder to avoid brittle class/index selectors
     this.adsupportplatformplaceholder = page.locator("//h4[normalize-space()='Support Platform*']/following::span[contains(@class,'mat-select-placeholder')][1]");
+    this.supportplatformlist = page.locator("//span[@class='mat-option-text']");  //support platform list
     this.orientationheading = page.locator("(//h4[normalize-space()='Orientation*'])[1]");
     // Use a relative locator for the orientation placeholder to avoid brittle class/index selectors
     this.adorientationplaceholder = page.locator("//h4[normalize-space()='Orientation*']/following::span[contains(@class,'mat-select-placeholder')][1]");
+    this.orientationlist = page.locator("//span[@class='mat-option-text']");  //orientation list
+    this.savebtn = page.locator("//span[normalize-space()='Save']");
+    this.adnameerror = page.locator("//span[normalize-space()='Ad Name is required']");
+    this.adurlerror = page.locator("//span[normalize-space()='Ad Url is required']");
+    this.supportplatformerror = page.locator("//span[normalize-space()='Support platform is required']");
+    this.orientationerror = page.locator("//span[normalize-space()='Orientation Type is required']");
   }
 
   async superadminclick() {
@@ -43,6 +50,53 @@ export class admanagement extends Basepage {
     await this.newadbtn.click();
     // Wait for the Create New Ads heading to appear to avoid flaky visibility assertions
     //await this.page.waitForSelector("//h3[normalize-space()='Create New Ads']", { state: 'visible', timeout: 10000 });
+  }
+
+  async savebtnclick() {
+    await this.savebtn.click();
+  }
+
+  async adnamefill(adname) {
+    await this.adnameplaceholder.fill(adname);
+  }
+
+  async adurlfill(url) {
+    await this.adurlplaceholder.fill(url);
+  }
+
+  async supportplatformfill(platform) {
+
+   await this.adsupportplatformplaceholder.click();
+   await this.page.waitForSelector("//span[@class='mat-option-text']", { state: 'visible' });
+    const total = await this.supportplatformlist.count();
+    for (let index = 0; index < total; index++) {
+      const element = this.supportplatformlist.nth(index);
+      const text = await element.innerText();
+      console.log("Support Platform Options: " + text);
+      if (text.includes(platform)) {
+        await element.click();
+        break;
+      }
+    } 
+
+
+  }
+
+  async orientationfill(orientation) {
+
+   await this.adorientationplaceholder.click();
+   await this.page.waitForSelector("//span[@class='mat-option-text']", { state: 'visible' });
+    const total = await this.orientationlist.count();
+    for (let index = 0; index < total; index++) {
+      const element = this.orientationlist.nth(index);
+      const text = await element.innerText();
+      console.log("Orientation Options: " + text);
+      if (text.includes(orientation)) {
+        await element.click();
+        break;
+      }
+    } 
+
   }
   
 

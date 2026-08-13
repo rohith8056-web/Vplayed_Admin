@@ -1,0 +1,8 @@
+Support Platform Options: Web
+Support Platform Options: Mobile
+Support Platform Options: Both
+Orientation Options: Web
+Orientation Options: Mobile
+Orientation Options: Both
+Orientation Options: Landscape
+Orientation Options: Portrait
