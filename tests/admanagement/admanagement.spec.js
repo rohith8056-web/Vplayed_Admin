@@ -1,6 +1,7 @@
 import { expect } from "@playwright/test";
 import { admanagement } from "../../pages/admanagementpage.js";
 import { test } from "../../fixtures/data.fixture.js";
+import { getDayString, getYearString, getDayAndYear, getMonthShort } from "../../utils/dateUtils.js";
 
 let adManagementPage; 
 
@@ -115,16 +116,38 @@ test("TC-26: Verify that admanagement page is displayed", async ({ page, admanag
 
    await adManagementPage.addmanagementbtn.click();
    await adManagementPage.newadclick();
-   await adManagementPage.adnamefill(admanagementdatafixture[5].adname +Date.now());
-   await adManagementPage.adurlfill(admanagementdatafixture[5].adurl);
-   await adManagementPage.textlselectionlist(adManagementPage.adsupportplatformplaceholder, "//span[@class='mat-option-text']",adManagementPage.supportplatformlist, admanagementdatafixture[5].supportplatform);
-   await adManagementPage.textlselectionlist(adManagementPage.adorientationplaceholder, "//span[@class='mat-option-text']",adManagementPage.orientationlist, admanagementdatafixture[5].orientation);
+   const adName = admanagementdatafixture[5].adname + Date.now();
+   await adManagementPage.adnamefill(adName);
+   const adUrl = admanagementdatafixture[5].adurl;
+   await adManagementPage.adurlfill(adUrl);
+   const supportPlatform = admanagementdatafixture[5].supportplatform;
+   await adManagementPage.textlselectionlist(adManagementPage.adsupportplatformplaceholder, "//span[@class='mat-option-text']",adManagementPage.supportplatformlist, supportPlatform);
+   const Orientation = admanagementdatafixture[5].orientation;
+   await adManagementPage.textlselectionlist(adManagementPage.adorientationplaceholder, "//span[@class='mat-option-text']",adManagementPage.orientationlist, Orientation);
    await adManagementPage.savebtnclick();
    await page.waitForTimeout(3000);
    await expect(adManagementPage.adsuccessmsg).toBeVisible();
    await expect(adManagementPage.adsuccessmsg).toHaveText(admanagementdatafixture[5].assert1);
-   
+   await expect(adManagementPage.createdadname).toBeVisible();
+   await expect(adManagementPage.createdadname).toHaveText(`${adName}`);
+   await expect(await adManagementPage.createdAdUrl(adName)).toHaveText(`${adUrl}`);
+   await expect(await adManagementPage.createdSupportPlatform(adName)).toHaveText(`${supportPlatform}`);
+   await expect(await adManagementPage.createdOrientation(adName)).toHaveText(`${Orientation}`);
+  await expect(await adManagementPage.createdAdstatus(adName)).toHaveText(admanagementdatafixture[5].assert2);
+  // Verify the created ad date contains today's day and year (format-agnostic)
+  const createdDateLocator = await adManagementPage.createdAddate(adName);
+  const createdDateText = await createdDateLocator.innerText();
+  //const day = getDayString();
+  //const year = getYearString();
+  const month = getMonthShort();
+  const { day, year } = getDayAndYear();
+  expect(createdDateText).toContain(day);
+  expect(createdDateText).toContain(year);
+  expect(createdDateText).toContain(month);
+  expect(createdDateText).toContain(admanagementdatafixture[5].assert3);
   });
+
+  
 
   
 });
