@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
-import { admanagement } from "../pages/admanagementpage.js";
-import { test } from "../fixtures/data.fixture.js";
+import { admanagement } from "../../pages/admanagementpage.js";
+import { test } from "../../fixtures/data.fixture.js";
 
 let adManagementPage; 
 
@@ -16,7 +16,7 @@ test.describe("Functional Testing", () => {
 test("TC-26: Verify that admanagement page is displayed", async ({ page, admanagementdatafixture }) => {
 
     await adManagementPage.addmanagementbtn.click();
-    //await page.waitForTimeout(5000);
+    await page.waitForTimeout(2000);
     await expect(adManagementPage.page).toHaveURL("https://admin-staginggs.vplayed.com/vplayedqa/super-admin/ad-management");
     await expect(adManagementPage.heading).toBeVisible();
     await expect(adManagementPage.heading).toHaveText(admanagementdatafixture[0].assert1);
