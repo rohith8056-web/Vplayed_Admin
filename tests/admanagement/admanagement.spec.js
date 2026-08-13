@@ -104,7 +104,7 @@ test("TC-26: Verify that admanagement page is displayed", async ({ page, admanag
    await adManagementPage.newadclick();
    await adManagementPage.adnamefill(admanagementdatafixture[4].adname +Date.now());
    await adManagementPage.adurlfill(admanagementdatafixture[4].adurl);
-   await adManagementPage.supportplatformfill(admanagementdatafixture[4].supportplatform);
+   await adManagementPage.textlselectionlist(adManagementPage.adsupportplatformplaceholder, "//span[@class='mat-option-text']",adManagementPage.supportplatformlist, admanagementdatafixture[4].supportplatform);
    await adManagementPage.savebtnclick();
    await expect(adManagementPage.orientationerror).toBeVisible();
    await expect(adManagementPage.orientationerror).toHaveText(admanagementdatafixture[4].assert4);
@@ -117,8 +117,8 @@ test("TC-26: Verify that admanagement page is displayed", async ({ page, admanag
    await adManagementPage.newadclick();
    await adManagementPage.adnamefill(admanagementdatafixture[5].adname +Date.now());
    await adManagementPage.adurlfill(admanagementdatafixture[5].adurl);
-   await adManagementPage.supportplatformfill(admanagementdatafixture[5].supportplatform);
-   await adManagementPage.orientationfill(admanagementdatafixture[5].orientation);
+   await adManagementPage.textlselectionlist(adManagementPage.adsupportplatformplaceholder, "//span[@class='mat-option-text']",adManagementPage.supportplatformlist, admanagementdatafixture[5].supportplatform);
+   await adManagementPage.textlselectionlist(adManagementPage.adorientationplaceholder, "//span[@class='mat-option-text']",adManagementPage.orientationlist, admanagementdatafixture[5].orientation);
    await adManagementPage.savebtnclick();
    await page.waitForTimeout(3000);
    await expect(adManagementPage.adsuccessmsg).toBeVisible();
