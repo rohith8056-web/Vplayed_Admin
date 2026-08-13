@@ -32,6 +32,7 @@ export class admanagement extends Basepage {
     this.adurlerror = page.locator("//span[normalize-space()='Ad Url is required']");
     this.supportplatformerror = page.locator("//span[normalize-space()='Support platform is required']");
     this.orientationerror = page.locator("//span[normalize-space()='Orientation Type is required']");
+    this.adsuccessmsg = page.locator("//div[@role='alertdialog']");
   }
 
   async superadminclick() {

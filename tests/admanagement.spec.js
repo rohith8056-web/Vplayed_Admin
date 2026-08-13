@@ -120,7 +120,9 @@ test("TC-26: Verify that admanagement page is displayed", async ({ page, admanag
    await adManagementPage.supportplatformfill(admanagementdatafixture[5].supportplatform);
    await adManagementPage.orientationfill(admanagementdatafixture[5].orientation);
    await adManagementPage.savebtnclick();
-   await page.waitForTimeout(5000);
+   await page.waitForTimeout(3000);
+   await expect(adManagementPage.adsuccessmsg).toBeVisible();
+   await expect(adManagementPage.adsuccessmsg).toHaveText(admanagementdatafixture[5].assert1);
    
   });
 
