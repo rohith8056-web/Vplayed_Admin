@@ -33,6 +33,30 @@ export class admanagement extends Basepage {
     this.supportplatformerror = page.locator("//span[normalize-space()='Support platform is required']");
     this.orientationerror = page.locator("//span[normalize-space()='Orientation Type is required']");
     this.adsuccessmsg = page.locator("//div[@role='alertdialog']");
+    this.createdadname = page.locator("//span[normalize-space()='AD Name']/following::span[@class='sho-grids-title text-control fast-title-text'][1]");
+    // Use methods below to get locators for created ad entries by name (avoid referencing an undefined `adName` variable)
+  
+  }
+
+  // Locator helpers that accept the ad name at runtime to avoid ReferenceError
+  async createdAdUrl(adName) {
+    return this.page.locator(`//span[normalize-space()='${adName}']/following::span[@class='mat-tooltip-trigger ng-star-inserted'][1]`);
+  }
+
+  async createdSupportPlatform(adName) {
+    return this.page.locator(`//span[normalize-space()='${adName}']/following::span[@class='ng-star-inserted'][1]`);
+  }
+
+  async createdOrientation(adName) {
+    return this.page.locator(`//span[normalize-space()='${adName}']/following::span[@class='ng-star-inserted'][3]`);
+  }
+
+  async createdAdstatus(adName) {
+    return this.page.locator(`//span[normalize-space()='${adName}']/following::span[@class='upside label-published ng-star-inserted'][1]`);
+  }
+
+  async createdAddate(adName) {
+    return this.page.locator(`//span[normalize-space()='${adName}']/following::span[@class='ng-star-inserted'][5]`);
   }
 
   async superadminclick() {
