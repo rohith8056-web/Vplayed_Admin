@@ -65,7 +65,8 @@ export class admanagement extends Basepage {
     await this.adurlplaceholder.fill(url);
   }
 
-  async supportplatformfill(platform) {
+
+  /*async supportplatformfill(platform) {
 
    await this.adsupportplatformplaceholder.click();
    await this.page.waitForSelector("//span[@class='mat-option-text']", { state: 'visible' });
@@ -81,9 +82,9 @@ export class admanagement extends Basepage {
     } 
 
 
-  }
+  }*/
 
-  async orientationfill(orientation) {
+  /*async orientationfill(orientation) {
 
    await this.adorientationplaceholder.click();
    await this.page.waitForSelector("//span[@class='mat-option-text']", { state: 'visible' });
@@ -98,7 +99,7 @@ export class admanagement extends Basepage {
       }
     } 
 
-  }
+  }*/
   
 
 

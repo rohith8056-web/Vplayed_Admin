@@ -33,4 +33,21 @@ export class Basepage {
     await this.submit();
   }
 
+   async textlselectionlist(placeholderLocator, selectorvisibility, listlocator, visibleText) {
+
+   await placeholderLocator.click();
+    await this.page.waitForSelector(selectorvisibility, { state: 'visible' });
+    //const options = this.page.locator(optionsSelector);
+    const total = await listlocator.count();
+    for (let index = 0; index < total; index++) {
+      const element = listlocator.nth(index);
+      const text = await element.innerText();
+      if (text.includes(visibleText)) {
+        await element.click();
+        break;
+      }
+    }
+    //throw new Error(`Option "${visibleText}" not found using ${optionsSelector}`);
+  }
+
 }
