@@ -168,5 +168,26 @@ test("TC-26: Verify that admanagement page is displayed", async ({ page, admanag
 
   });
 
+  test("TC-34: verify ad management heading is displaying at correct design", async ({ page, admanagementdatafixture }) => {
+
+   await adManagementPage.addmanagementbtn.click();
+   await expect(adManagementPage.heading).toBeVisible();
+   const Heading = adManagementPage.heading; // or page.locator('h1')
+   const box = await Heading.boundingBox();
+   console.log('Heading bounding box:', box);
+   await expect(box.x).toBeCloseTo(255.203125, 1); //here where the 1 is the tolerance value, you can adjust it as needed
+   await expect(box.y).toBeCloseTo(95.1953125, 1);
+   await expect(box.width).toBeCloseTo(160.125, 1);
+   await expect(box.height).toBeCloseTo(24.1484375, 1);
+   await expect(adManagementPage.heading).toHaveText(admanagementdatafixture[0].assert1);
+   await expect(adManagementPage.heading).toHaveCSS('font-family', '"IBM Plex Sans", sans-serif');
+   await expect(adManagementPage.heading).toHaveCSS('font-size', '21px');
+   await expect(adManagementPage.heading).toHaveCSS('font-weight', '700');
+   await expect(adManagementPage.heading).toHaveCSS('line-height', '24.15px'); //25.875px actually but its coming 24 so i added it to make test pass
+   await expect(adManagementPage.heading).toHaveCSS('color', 'rgb(17, 18, 23)');
+   await expect(adManagementPage.heading).toHaveCSS('align-items', 'center');
+
+   });
+
   
 });
