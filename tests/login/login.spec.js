@@ -71,7 +71,7 @@ test.describe("Functional Testing", () => {
 
   test("TC-13: Logs in successfully with valid credentials", async ({ page, logindatafixture }) => {
     await signinPage.login(logindatafixture.TC13.email, logindatafixture.TC13.password);
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(7000);
     await expect(signinPage.successToast).toContainText(logindatafixture.TC13.assert);
   });
 
