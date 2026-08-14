@@ -35,6 +35,8 @@ export class admanagement extends Basepage {
     this.adsuccessmsg = page.locator("//div[@role='alertdialog']");
     this.createdadname = page.locator("//span[normalize-space()='AD Name']/following::span[@class='sho-grids-title text-control fast-title-text'][1]");
     // Use methods below to get locators for created ad entries by name (avoid referencing an undefined `adName` variable)
+    //this.adstatusactivateanddeactivatebtn = page.locator("//span[normalize-space()='Test1786631481107']/following::mat-icon[@class='mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color'][3]");
+    this.adsstatuspopupyesbtn = page.locator("(//span[normalize-space()='Yes'])[1]");
   
   }
 
@@ -52,11 +54,19 @@ export class admanagement extends Basepage {
   }
 
   async createdAdstatus(adName) {
-    return this.page.locator(`//span[normalize-space()='${adName}']/following::span[@class='upside label-published ng-star-inserted'][1]`);
+    return this.page.locator(`//span[normalize-space()='${adName}']/following::span[contains(@class, 'upside')][1]`);
   }
+
+  /*async createdAdstatusdeactive(adName) {
+    return this.page.locator(`//span[normalize-space()='${adName}']/following::span[@class='upside label-disabled ng-star-inserted'][1]`);
+  }*/
 
   async createdAddate(adName) {
     return this.page.locator(`//span[normalize-space()='${adName}']/following::span[@class='ng-star-inserted'][5]`);
+  }
+
+  async adstatusactivatedeactivate(adName) {
+    return this.page.locator(`//span[normalize-space()='${adName}']/following::mat-icon[@class='mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color'][3]`).click();
   }
 
   async superadminclick() {

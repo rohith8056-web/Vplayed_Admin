@@ -147,7 +147,26 @@ test("TC-26: Verify that admanagement page is displayed", async ({ page, admanag
   expect(createdDateText).toContain(admanagementdatafixture[5].assert3);
   });
 
-  
+  test("TC-33: verify when the ad status is active and deactive is showing correctly", async ({ page, admanagementdatafixture }) => {
+
+   await adManagementPage.addmanagementbtn.click();
+   //await adManagementPage.newadclick();
+  const adName = await adManagementPage.createdadname.innerText();
+  const statusLocator = await adManagementPage.createdAdstatus(adName); 
+  const statusText = await statusLocator.innerText();
+  //const statusText = await adManagementPage.createdAdstatus(adName).innerText(); we can not use this if we used async function for createdAdstatus because it will return a promise and we can not use innerText on promise so we need to use await for createdAdstatus and then use innerText on that locator so we used like aboce if we didnt used async function for createdAdstatus then we can use like this
+
+  if (statusText === 'Active') {
+   await adManagementPage.adstatusactivatedeactivate(adName);
+   await adManagementPage.adsstatuspopupyesbtn.click();
+   await expect(await adManagementPage.createdAdstatus(adName)).toHaveText('Inactive');
+  } else {
+   await adManagementPage.adstatusactivatedeactivate(adName);
+   await adManagementPage.adsstatuspopupyesbtn.click();
+   await expect(await adManagementPage.createdAdstatus(adName)).toHaveText('Active');
+  }
+
+  });
 
   
 });
