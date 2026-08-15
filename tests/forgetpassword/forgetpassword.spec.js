@@ -109,13 +109,13 @@ test.describe("Forgot password page", () => {
   });
 
 
-  test('TC25 - Resend timer is running on Resend t', async ({ page, forgetpassdatafixture, logindatafixture }) => {
+  test('TC26 - when the user click on the go back to sign in then sign in page is displayed', async ({ page, forgetpassdatafixture, logindatafixture }) => {
 
     await Forgetpassword.forgetpasswordsubmit(forgetpassdatafixture.TC25.Email);
     await expect(Forgetpassword.gobacktosignin).toHaveText('Go back to  Sign In');
     await Forgetpassword.forgetpasswordpagesigninclick();
     await page.waitForTimeout(3000);
-    await expect(Forgetpassword.page).toHaveURL('https://admin-staginggs.vplayed.com/');
+    await expect(Forgetpassword.page).toHaveURL("/");
     await expect(Forgetpassword.loginPageHeading).toHaveText(logindatafixture.TC01.assert);
     await expect(Forgetpassword.signInIntroText).toHaveText(logindatafixture.TC02.assert);
     await expect(Forgetpassword.forgotPasswordLink).toHaveText(logindatafixture.TC03.assert);

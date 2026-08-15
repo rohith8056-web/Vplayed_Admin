@@ -18,7 +18,7 @@ test("TC-26: Verify that admanagement page is displayed", async ({ page, admanag
 
     await adManagementPage.addmanagementbtn.click();
     await page.waitForTimeout(2000);
-    await expect(adManagementPage.page).toHaveURL("https://admin-staginggs.vplayed.com/vplayedqa/super-admin/ad-management");
+    await expect(adManagementPage.page).toHaveURL("/vplayedqa/super-admin/ad-management");
     await expect(adManagementPage.heading).toBeVisible();
     await expect(adManagementPage.heading).toHaveText(admanagementdatafixture[0].assert1);
   });
