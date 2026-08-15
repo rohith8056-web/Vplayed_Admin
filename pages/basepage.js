@@ -11,7 +11,7 @@ export class Basepage {
   }
 
   async openLoginPage() {
-    await this.page.goto("https://admin-staginggs.vplayed.com");
+    await this.page.goto("/");
   }
 
   async fillEmail(email) {

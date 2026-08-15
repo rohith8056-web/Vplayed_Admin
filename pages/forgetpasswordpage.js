@@ -27,7 +27,7 @@ export class forgetpassword extends SigninPage {
   }
 
   async openLoginPage() {
-    await this.page.goto("https://admin-staginggs.vplayed.com");
+    await this.page.goto("/");
   }
 
   async resendcodeclick() {

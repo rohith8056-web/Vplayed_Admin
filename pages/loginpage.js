@@ -21,10 +21,9 @@ export class SigninPage extends Basepage {
     this.passwordToggle = page.locator("//div[@Class='show-pass']");
   }
 
-  /*async openForgotPasswordPage() {
-    await this.page.goto("https://admin-staginggs.vplayed.com/forgot-password");
-  } */
-
+  async openForgotPasswordPage() {
+    await this.page.goto("/forgot-password");
+  }
 
   async togglePasswordVisibility() {
     await this.passwordToggle.first().click();
