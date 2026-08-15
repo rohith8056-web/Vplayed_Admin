@@ -9,10 +9,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        spec:
-          - tests/login/login.spec.js
-          - tests/forgetpassword/forgetpassword.spec.js
-          - tests/admanagement/admanagement.spec.js
+        include:
+          - name: login
+            spec: tests/login/login.spec.js
+          - name: forgetpassword
+            spec: tests/forgetpassword/forgetpassword.spec.js
+          - name: admanagement
+            spec: tests/admanagement/admanagement.spec.js
     timeout-minutes: 60
     runs-on: macos-latest
     steps:
@@ -24,11 +27,11 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Run ${{ matrix.spec }}
-        run: npx playwright test ${{ matrix.spec }} --project=chromium --workers=2
+      - name: Run ${{ matrix.name }}
+        run: npx playwright test ${{ matrix.spec }} --project=chromium --workers=1
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
-          name: playwright-report-${{ matrix.spec }}
+          name: playwright-report-${{ matrix.name }}
           path: playwright-report/
           retention-days: 30
