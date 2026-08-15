@@ -25,7 +25,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run ${{ matrix.spec }}
-        run: npx playwright test ${{ matrix.spec }} --project=chromium --workers=1
+        run: npx playwright test ${{ matrix.spec }} --project=chromium --workers=2
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
