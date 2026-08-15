@@ -99,7 +99,7 @@ export class admanagement extends Basepage {
     await this.adurlplaceholder.fill(url);
   }
 
-
+  // made this as dynamic and reusable and moved to basepage.js for reusability across different pages
   /*async supportplatformfill(platform) {
 
    await this.adsupportplatformplaceholder.click();
