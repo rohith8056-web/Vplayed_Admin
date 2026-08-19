@@ -1,0 +1,78 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: admanagement/admanagement.spec.js >> Functional Testing >> TC-30: when the user enter the adname,url and click on save the error should show in remaining 2 feilds
+- Location: tests/admanagement/admanagement.spec.js:88:3
+
+# Error details
+
+```
+Error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "/", waiting until "load"
+
+```
+
+# Test source
+
+```ts
+  1  | 
+  2  | export class Basepage {
+  3  | 
+  4  |   constructor(page) 
+  5  |   {
+  6  |     this.page = page;
+  7  |     this.emailInput = page.locator('//*[@id="body"]/app-root/div/app-gud-sign-in/div/div/form/div[1]/div/label');
+  8  |     this.passwordInput = page.locator("#password");
+  9  |     this.signInButton = page.getByRole("button", { name: "Sign In" }).first();
+  10 |     this.forgotPasswordLink = page.getByText("Forgot Password?");
+  11 |   }
+  12 | 
+  13 |   async openLoginPage() {
+> 14 |     await this.page.goto("/");
+     |                     ^ Error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+  15 |   }
+  16 | 
+  17 |   async fillEmail(email) {
+  18 |     await this.emailInput.fill(email);
+  19 |   }
+  20 | 
+  21 |   async fillPassword(password) {
+  22 |     await this.passwordInput.fill(password);
+  23 |   }
+  24 | 
+  25 |   async submit() {
+  26 |     await this.signInButton.waitFor({ state: "visible" });
+  27 |     await this.signInButton.click();
+  28 |   }
+  29 | 
+  30 |   async login(email, password) {
+  31 |     await this.fillEmail(email);
+  32 |     await this.fillPassword(password);
+  33 |     await this.submit();
+  34 |   }
+  35 | 
+  36 |    async textlselectionlist(placeholderLocator, selectorvisibility, listlocator, visibleText) {
+  37 | 
+  38 |    await placeholderLocator.click();
+  39 |     await this.page.waitForSelector(selectorvisibility, { state: 'visible' });
+  40 |     //const options = this.page.locator(optionsSelector);
+  41 |     const total = await listlocator.count();
+  42 |     for (let index = 0; index < total; index++) {
+  43 |       const element = listlocator.nth(index);
+  44 |       const text = await element.innerText();
+  45 |       if (text.includes(visibleText)) {
+  46 |         await element.click();
+  47 |         break;
+  48 |       }
+  49 |     }
+  50 |     //throw new Error(`Option "${visibleText}" not found using ${optionsSelector}`);
+  51 |   }
+  52 | 
+  53 | }
+```

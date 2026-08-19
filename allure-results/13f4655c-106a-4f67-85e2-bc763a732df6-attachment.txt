@@ -1,0 +1,1 @@
+Heading bounding box: { x: 255.203125, y: 95.1875, width: 160.125, height: 24.140625 }
