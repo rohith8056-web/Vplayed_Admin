@@ -28,7 +28,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run ${{ matrix.name }}
-        run: PLAYWRIGHT_HEADLESS=true npx playwright test ${{ matrix.spec }} --project=staging --workers=1
+        run: PLAYWRIGHT_HEADLESS=true npx playwright test ${{ matrix.spec }} --project=staging --workers=2
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
