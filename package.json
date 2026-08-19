@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:staging": "STAGING_URL=https://admin-staginggs.vplayed.com/vplayedqa npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -14,7 +16,6 @@
     "allure-playwright": "^3.10.2"
   },
   "dependencies": {
-    "dotenv": "^17.4.2",
     "papaparse": "^5.5.4",
     "xlsx": "^0.18.5"
   }

@@ -1,5 +1,4 @@
 // @ts-check
-import 'dotenv/config';
 import { defineConfig, devices } from '@playwright/test';
 
 /**
@@ -28,8 +27,9 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: process.env.STAGING_URL ,
-    headless: process.env.PLAYWRIGHT_HEADLESS === 'true',
+    // Use STAGING_URL from environment when available, otherwise fall back to a sensible default
+    baseURL: 'https://admin-staginggs.vplayed.com/vplayedqa',
+    headless: false,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
 
@@ -37,6 +37,13 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+
+     {
+       name: 'staging',
+       use: { ...devices['Desktop Chrome'], baseURL: 'https://admin-staginggs.vplayed.com/vplayedqa' }
+    },
+
+
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
