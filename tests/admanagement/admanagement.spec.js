@@ -175,7 +175,7 @@ test("TC-26: Verify that admanagement page is displayed", async ({ page, admanag
    const Heading = adManagementPage.heading; // or page.locator('h1')
    const box = await Heading.boundingBox();
    console.log('Heading bounding box:', box);
-   await expect(box.x).toBeCloseTo(255.203125, 1); //here where the 1 is the tolerance value, you can adjust it as needed
+   await expect(box.x).toBeCloseTo(255.203125, 5); //here where the 1 is the tolerance value, you can adjust it as needed
    await expect(box.y).toBeCloseTo(95.1953125, 1);
    await expect(box.width).toBeCloseTo(160.125, 1);
    await expect(box.height).toBeCloseTo(24.1484375, 1);
