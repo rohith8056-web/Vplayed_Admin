@@ -28,7 +28,7 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // Use STAGING_URL from environment when available, otherwise fall back to a sensible default
-    baseURL: 'https://admin-staginggs.vplayed.com/vplayedqa',
+    baseURL: 'https://admin-staginggs.vplayed.com',
     headless: false,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -40,7 +40,7 @@ export default defineConfig({
 
      {
        name: 'staging',
-       use: { ...devices['Desktop Chrome'], baseURL: 'https://admin-staginggs.vplayed.com/vplayedqa' }
+       use: { ...devices['Desktop Chrome'], baseURL: 'https://admin-staginggs.vplayed.com' }
     },
 
 

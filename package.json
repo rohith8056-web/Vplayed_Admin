@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:staging": "STAGING_URL=https://admin-staginggs.vplayed.com/vplayedqa npx playwright test"
+    "test:staging": "STAGING_URL=https://admin-staginggs.vplayed.com npx playwright test"
   },
   "keywords": [],
   "author": "",
