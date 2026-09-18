@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { waitForLatestOTP } from '../../utils/gmail.js';
 
+//user login
 test('Login with OTP', async ({ page }) => {
 
   await page.goto('https://staginggs.vplayed.com/');
