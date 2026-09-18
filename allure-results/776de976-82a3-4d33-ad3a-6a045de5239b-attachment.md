@@ -1,0 +1,219 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: customerlogin/userlogin.spec.js >> Login with OTP for customer
+- Location: tests/customerlogin/userlogin.spec.js:5:1
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded.
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic:
+      - paragraph [ref=e4]:
+        - text: All the content displayed in this domain is purely for demo purpose only.
+        - button "Close Demo Strip" [ref=e5] [cursor=pointer]:
+          - img [ref=e6]
+      - banner [ref=e9]:
+        - generic [ref=e10]:
+          - generic [ref=e12]:
+            - link "Vplayed" [ref=e13] [cursor=pointer]:
+              - /url: /
+              - img "Vplayed" [ref=e14]
+            - link "Movies" [ref=e15] [cursor=pointer]:
+              - /url: /category/movies
+            - generic [ref=e16] [cursor=pointer]:
+              - text: Series
+              - img [ref=e18]
+            - link "Promos" [ref=e20] [cursor=pointer]:
+              - /url: /promos
+            - link "Channels" [ref=e21] [cursor=pointer]:
+              - /url: /studio/all/studios
+            - link "Genre" [ref=e22] [cursor=pointer]:
+              - /url: /more
+            - generic [ref=e23] [cursor=pointer]:
+              - text: Streaming
+              - img [ref=e25]
+          - generic [ref=e27]:
+            - generic "Open search" [ref=e28]:
+              - generic [ref=e35]:
+                - generic:
+                  - textbox "Search"
+                - button [ref=e38] [cursor=pointer]:
+                  - img [ref=e41]
+            - generic [ref=e45] [cursor=pointer]:
+              - img [ref=e46]
+              - generic [ref=e48]: Subscribe
+            - generic [ref=e49]:
+              - generic [ref=e51] [cursor=pointer]:
+                - img [ref=e52]
+                - text: "0"
+              - img [ref=e56] [cursor=pointer]
+            - img [ref=e99] [cursor=pointer]
+            - generic [ref=e103] [cursor=pointer]:
+              - generic [ref=e108]: G
+              - img [ref=e109]
+              - generic:
+                - img
+      - generic [ref=e111]:
+        - button "Close overlay" [ref=e112] [cursor=pointer]
+        - generic [ref=e113]:
+          - button "Close overlay" [ref=e114] [cursor=pointer]:
+            - img [ref=e116]
+          - generic [ref=e120]:
+            - heading "Explore your world of entertainment" [level=4] [ref=e121]
+            - paragraph [ref=e122]: Enjoy the ultimate streaming experience!
+          - generic [ref=e124]:
+            - img "Vplayed" [ref=e125]
+            - heading "Log in to your Account" [level=3] [ref=e126]
+            - paragraph [ref=e127]: Let’s explore your world of entertainment with VPlayed.
+            - generic [ref=e128]:
+              - generic "Sign in with Google" [ref=e129]:
+                - iframe [ref=e131]:
+                  - button "Sign in with Google. Opens in new tab" [ref=f1e3] [cursor=pointer]:
+                    - generic [ref=f1e5]:
+                      - img [ref=f1e7]
+                      - generic [ref=f1e14]: Sign in with Google
+              - button "Sign in with Apple" [ref=e132] [cursor=pointer]:
+                - img [ref=e133]
+                - text: Sign in with Apple
+            - generic [ref=e137]: or continue with email
+            - paragraph [ref=e138]: Sign in / Sign up
+            - generic [ref=e140]:
+              - generic [ref=e141]:
+                - textbox [ref=e142]: rohith8056@gmail.com
+                - generic [ref=e143]: Email ID
+              - button "Continue" [ref=e144] [cursor=pointer]:
+                - generic [ref=e145]: Continue
+              - generic [ref=e146]:
+                - text: I am above 18 years of age and by proceeding I agree to the
+                - link "Terms of use" [ref=e148] [cursor=pointer]:
+                  - /url: /terms-and-conditions
+                - text: and
+                - link "Privacy policy" [ref=e149] [cursor=pointer]:
+                  - /url: /privacy-policy/web
+      - generic [ref=e152]:
+        - generic [ref=e153]:
+          - text: Vplayed uses cookies to ensure you get the best experience on our website.
+          - link "COOKIES_POPUP.LEARN_MORE_ARIA" [ref=e154] [cursor=pointer]:
+            - /url: /privacy-policy/web
+            - text: Learn More
+        - button "Got it" [ref=e155] [cursor=pointer]:
+          - generic [ref=e156]: Got it
+        - button "Accept cookies" [ref=e157] [cursor=pointer]:
+          - img [ref=e158]
+    - list [ref=e166]:
+      - listitem:
+        - link "IPL Series":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "IPL Series"
+      - listitem [ref=e167] [cursor=pointer]:
+        - link "The Flash" [ref=e168]:
+          - /url: javascript:void(0)
+          - img "The Flash" [ref=e172]
+      - listitem:
+        - link "Stage Series":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "Stage Series"
+      - listitem:
+        - link "Kaththi":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "Kaththi"
+      - listitem:
+        - link "The Story of Snow White And The Seven Dwarfs":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "The Story of Snow White And The Seven Dwarfs"
+      - listitem:
+        - link "Retro Teaser":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "Retro Teaser"
+      - listitem:
+        - link "Marshmello":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "Marshmello"
+      - listitem:
+        - link "BEAST":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "BEAST"
+      - listitem:
+        - link "Stage schedule video":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "Stage schedule video"
+      - listitem:
+        - link "Offline Download Series":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "Offline Download Series"
+      - listitem:
+        - link "New Series":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "New Series"
+      - listitem:
+        - link "NewMountains":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "NewMountains"
+      - listitem:
+        - link "Avatar The Way Of Water 20 sec Promo Tamil 77":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "Avatar The Way Of Water 20 sec Promo Tamil 77"
+      - listitem:
+        - link "title-2203":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "title-2203"
+  - generic [ref=e182]:
+    - generic [ref=e183]:
+      - img "notification icon" [ref=e185]
+      - generic [ref=e186]: Subscribe to our notifications for the latest news and updates. You can disable anytime.
+    - generic [ref=e188]:
+      - button "Subscribe" [ref=e189] [cursor=pointer]
+      - button "Later" [ref=e190] [cursor=pointer]
+```

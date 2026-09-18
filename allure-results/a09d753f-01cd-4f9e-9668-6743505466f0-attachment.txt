@@ -1,0 +1,10 @@
+OTP requested...
+Gmail search query: in:anywhere newer_than:7d from:developer.vplay@gmail.com subject:"Vplayed-One Time Password (OTP) Confirmation"
+OTP not available yet: No OTP emails found in Spam
+Waiting 10 seconds for OTP...
+Gmail search query: in:anywhere newer_than:7d from:developer.vplay@gmail.com subject:"Vplayed-One Time Password (OTP) Confirmation"
+[1a0b3f6c763c247c] received=2026-09-18T10:01:24.000Z snippet="Verify your OTP to Login 612648 Use this verification code to complete your sign" matched=612648 (context)
+[1a0b3f6c5ad0f7ff] received=2026-09-18T10:01:24.000Z snippet="Verify your OTP to Login 071240 Use this verification code to complete your sign" matched=071240 (context)
+Latest OTP email received: Fri Sep 18 2026 15:31:24 GMT+0530 (India Standard Time) (match: context)
+Latest OTP: 612648
+OTP received: 612648
