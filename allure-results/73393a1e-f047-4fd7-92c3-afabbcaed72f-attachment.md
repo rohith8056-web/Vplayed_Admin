@@ -1,0 +1,266 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: customerlogin/example.spec.js >> Login with OTP
+- Location: tests/customerlogin/example.spec.js:4:1
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded.
+```
+
+```
+Error: page.waitForTimeout: Test timeout of 30000ms exceeded.
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic:
+      - paragraph [ref=e4]:
+        - text: All the content displayed in this domain is purely for demo purpose only.
+        - button "Close Demo Strip" [ref=e5] [cursor=pointer]:
+          - img [ref=e6]
+      - banner [ref=e9]:
+        - generic [ref=e10]:
+          - generic [ref=e12]:
+            - link "Vplayed" [ref=e13] [cursor=pointer]:
+              - /url: /
+              - img "Vplayed" [ref=e14]
+            - link "Movies" [ref=e15] [cursor=pointer]:
+              - /url: /category/movies
+            - generic [ref=e16] [cursor=pointer]:
+              - text: Series
+              - img [ref=e18]
+            - link "Promos" [ref=e20] [cursor=pointer]:
+              - /url: /promos
+            - link "Channels" [ref=e21] [cursor=pointer]:
+              - /url: /studio/all/studios
+            - link "Genre" [ref=e22] [cursor=pointer]:
+              - /url: /more
+            - generic [ref=e23] [cursor=pointer]:
+              - text: Streaming
+              - img [ref=e25]
+          - generic [ref=e27]:
+            - generic "Open search" [ref=e28]:
+              - generic [ref=e35]:
+                - generic:
+                  - textbox "Search"
+                - button [ref=e38] [cursor=pointer]:
+                  - img [ref=e41]
+            - generic [ref=e45] [cursor=pointer]:
+              - img [ref=e46]
+              - generic [ref=e48]: Subscribe
+            - generic [ref=e49]:
+              - generic [ref=e51] [cursor=pointer]:
+                - img [ref=e52]
+                - text: "0"
+              - img [ref=e56] [cursor=pointer]
+            - img [ref=e99] [cursor=pointer]
+            - generic [ref=e103] [cursor=pointer]:
+              - generic [ref=e108]: G
+              - img [ref=e109]
+              - generic:
+                - img
+      - generic [ref=e111]:
+        - button "Close overlay" [ref=e112] [cursor=pointer]
+        - generic [ref=e113]:
+          - button "Close popup" [ref=e114] [cursor=pointer]:
+            - img [ref=e115]
+          - generic [ref=e119]:
+            - heading "Explore your world of entertainment" [level=4] [ref=e120]
+            - paragraph [ref=e121]: Enjoy the ultimate streaming experience!
+          - generic [ref=e123]:
+            - img "Vplayed" [ref=e124]
+            - heading "Verify your email" [level=3] [ref=e125]
+            - paragraph [ref=e126]: Enter the OTP sent to your email rohith8056@gmail.com
+            - generic [ref=e130] [cursor=pointer]:
+              - textbox [ref=e131]: "7"
+              - textbox [ref=e132]: "9"
+              - textbox [ref=e133]: "9"
+              - textbox [ref=e134]: "6"
+              - textbox [ref=e135]: "4"
+              - textbox [ref=e136]: "4"
+            - button "Continue" [active] [ref=e137] [cursor=pointer]:
+              - generic [ref=e138]: Continue
+            - generic [ref=e139]:
+              - paragraph [ref=e140]: Didn’t get a code?
+              - generic [ref=e142]: Request a new code in43 Sec
+            - paragraph [ref=e143]:
+              - button "Go to step 0" [ref=e144] [cursor=pointer]: Change your Email
+      - generic [ref=e147]:
+        - generic [ref=e148]:
+          - text: Vplayed uses cookies to ensure you get the best experience on our website.
+          - link "COOKIES_POPUP.LEARN_MORE_ARIA" [ref=e149] [cursor=pointer]:
+            - /url: /privacy-policy/web
+            - text: Learn More
+        - button "Got it" [ref=e150] [cursor=pointer]:
+          - generic [ref=e151]: Got it
+        - button "Accept cookies" [ref=e152] [cursor=pointer]:
+          - img [ref=e153]
+    - list [ref=e161]:
+      - listitem:
+        - link "IPL Series":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "IPL Series"
+      - listitem [ref=e162] [cursor=pointer]:
+        - link "The Flash" [ref=e163]:
+          - /url: javascript:void(0)
+          - img "The Flash" [ref=e167]
+      - listitem:
+        - link "Stage Series":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "Stage Series"
+      - listitem:
+        - link "Kaththi":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "Kaththi"
+      - listitem:
+        - link "The Story of Snow White And The Seven Dwarfs":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "The Story of Snow White And The Seven Dwarfs"
+      - listitem:
+        - link "Retro Teaser":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "Retro Teaser"
+      - listitem:
+        - link "Marshmello":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "Marshmello"
+      - listitem:
+        - link "BEAST":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "BEAST"
+      - listitem:
+        - link "Stage schedule video":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "Stage schedule video"
+      - listitem:
+        - link "Offline Download Series":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "Offline Download Series"
+      - listitem:
+        - link "New Series":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "New Series"
+      - listitem:
+        - link "NewMountains":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "NewMountains"
+      - listitem:
+        - link "Avatar The Way Of Water 20 sec Promo Tamil 77":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "Avatar The Way Of Water 20 sec Promo Tamil 77"
+      - listitem:
+        - link "title-2203":
+          - /url: javascript:void(0)
+          - generic:
+            - generic:
+              - generic:
+                - img "title-2203"
+  - generic [ref=e175]:
+    - button "Close" [ref=e176] [cursor=pointer]
+    - generic "Invalid OTP." [ref=e177]
+  - generic [ref=e180]:
+    - generic [ref=e181]:
+      - img "notification icon" [ref=e183]
+      - generic [ref=e184]: Subscribe to our notifications for the latest news and updates. You can disable anytime.
+    - generic [ref=e186]:
+      - button "Subscribe" [ref=e187] [cursor=pointer]
+      - button "Later" [ref=e188] [cursor=pointer]
+```
+
+# Test source
+
+```ts
+  1  | import { test, expect } from '@playwright/test';
+  2  | import { waitForLatestOTP } from '../../utils/gmail.js';
+  3  | 
+  4  | test('Login with OTP', async ({ page }) => {
+  5  | 
+  6  |   await page.goto('https://staginggs.vplayed.com/');
+  7  |   await page.waitForTimeout(5000);
+  8  |   await page.locator('//*[@id="fixedheader"]/div/div[2]/div[7]/a/span/ngx-avatars/div/div').hover();
+  9  | 
+  10 |   await page.getByRole('button', { name: /sign in|log in/i }).click();
+  11 | 
+  12 |   await page.locator('input[type="email"]').first().fill('rohith8056@gmail.com');
+  13 |   await page.getByRole('button', { name: /continue/i }).click();
+  14 |   await page.waitForTimeout(7000);
+  15 | 
+  16 |   const otpRequestTime = Date.now();
+  17 | 
+  18 |   console.log('OTP requested...');
+  19 | 
+  20 |   const otp = await waitForLatestOTP({
+  21 |     sender: 'developer.vplay@gmail.com',
+  22 |     subject: 'Vplayed-One Time Password (OTP) Confirmation',
+  23 |     afterTimestamp: otpRequestTime,
+  24 |     timeout: 60000,
+  25 |     pollingInterval: 5000
+  26 |   });
+  27 | 
+  28 |   console.log(`OTP received: ${otp}`);
+  29 | 
+  30 |   expect(otp, 'OTP was not received from Gmail').toMatch(/^\d{6}$/);
+  31 | 
+  32 |   const boxes = page.locator('input.single-otp-input');
+  33 |   await expect(boxes).toHaveCount(6);
+  34 | 
+  35 |   for (let i = 0; i < otp.length; i++) {
+  36 |   //await boxes.nth(i).click();
+  37 |   await boxes.nth(i).pressSequentially(otp[i], { delay: 50 });
+  38 |   //await boxes.nth(i).press('Tab'); // helps trigger validation
+  39 | }
+  40 | 
+  41 |   await page.getByRole('button', { name: /continue/i }).click();
+> 42 |   await page.waitForTimeout(5000);
+     |              ^ Error: page.waitForTimeout: Test timeout of 30000ms exceeded.
+  43 | 
+  44 | });
+  45 | 
+```
