@@ -1,0 +1,15 @@
+OTP requested...
+Gmail search query: in:anywhere newer_than:7d from:developer.vplay@gmail.com subject:"Vplayed-One Time Password (OTP) Confirmation"
+[1a12bd56eab4e123] received=2026-10-11T16:39:25.000Z snippet="Verify your OTP to Login 006958 Use this verification code to complete your sign" matched=006958 (context)
+[1a12bd3e7d3cfc68] received=2026-10-11T16:37:45.000Z snippet="Verify your OTP to Login 412188 Use this verification code to complete your sign" matched=412188 (context)
+[1a12b988f27bb7ba] received=2026-10-11T15:32:56.000Z snippet="Verify your OTP to Login 866964 Use this verification code to complete your sign" matched=866964 (context)
+[1a12b96f13258349] received=2026-10-11T15:31:09.000Z snippet="Verify your OTP to Login 414932 Use this verification code to complete your sign" matched=414932 (context)
+[1a12b93a7cfd442f] received=2026-10-11T15:27:34.000Z snippet="Verify your OTP to Login 400798 Use this verification code to complete your sign" matched=400798 (context)
+[1a12b9025cd12388] received=2026-10-11T15:23:45.000Z snippet="Verify your OTP to Login 047417 Use this verification code to complete your sign" matched=047417 (context)
+[1a12b8c77820493d] received=2026-10-11T15:19:43.000Z snippet="Verify your OTP to Login 793436 Use this verification code to complete your sign" matched=793436 (context)
+[1a12ae3988ec5eca] received=2026-10-11T12:15:15.000Z snippet="Verify your OTP to Login 895928 Use this verification code to complete your sign" matched=895928 (context)
+[1a125e5394634a9a] received=2026-10-10T12:58:57.000Z snippet="Verify your OTP to Login 560318 Use this verification code to complete your sign" matched=560318 (context)
+[1a125e2a48a8827a] received=2026-10-10T12:56:07.000Z snippet="Verify your OTP to Login 896587 Use this verification code to complete your sign" matched=896587 (context)
+Latest OTP email received: Sun Oct 11 2026 22:09:25 GMT+0530 (India Standard Time) (match: context)
+Latest OTP: 006958
+OTP received: 006958

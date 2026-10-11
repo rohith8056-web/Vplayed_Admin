@@ -1,0 +1,141 @@
+{
+  "cookies": [
+    {
+      "name": "g_state",
+      "value": "{\"i_l\":0,\"i_ll\":1791736765326,\"i_b\":\"Pl85INDIlI6a+hBMMRQPOpbgj3FzsW50FGDpuHWOFJ8\",\"i_e\":{\"enable_itp_optimization\":24},\"i_et\":1791736765326}",
+      "domain": "staginggs.vplayed.com",
+      "path": "/",
+      "expires": 1807288765,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__cf_bm",
+      "value": "rC_Dq9KkDP4fKSgoawwgsiqnwp2oRNtfDgGsCVuMvqU-1791736767.4380655-1.0.1.1-J5ea2B7ka5hLrkwYczLJtdzAiv3721c4I17WLRWyc5oum9IVZTXsrYNDjgc.IPZ67V_VWHg_qmbOevG5Zw5Ou.vGhkJ1GkQaNkDuYB.j8ab5tiTsl6gYGENbylaS8.AQ",
+      "domain": ".onesignal.com",
+      "path": "/",
+      "expires": 1791738567.37751,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "GUDSHO_BETA_SID",
+      "value": "U2FsdGVkX1%2FBKn%2FHo9QmS6MS1d51fAAaT%2FAdbgh7PlR9639mzg2%2BSBd9X03vVscVAWDqBdRkUUWQRGlcrNMDIWDJKDxUUJQlAJOyd57r%2FmZ07g6c1J43iEMBU4JScwBFefAGzmF8ZQgf%2FR2GkqKqSDBiFQkzrocrvxV%2F0zE5SyE2BzvdlIXF%2F6rYz9JbEp3rITLNmdBfSfAHLZmQSEw9We9BoGiZInQzcmmnRPUYfdBzIQ75aREK64VhP33Jq3Uez1dZ5zCzSW%2FbFlLK9KYPUiAQ%2B7Kwv3DHpUeeYJtosg6EcZcuebM0XvzOqbmkhOco6sKq10wvCuo%2Bhp3C1so27M%2BjhfHoesIpA7VNk8SMKWenJK7t%2Brf3lARQ67%2Fp3OqOw6F4aC%2F0iZ3dPWbzRNP%2B74w2kbLG1aDJrXUsM8BSdHwoc70CJvFTRnEH03qFdi5WKU5JaEElFR06RxiO9cGF5ZTQu1NRrC8Uxqa1VcrVNQlJYcbXXCiYMy7QQXArQZZFx0dlykk6%2FIBcYNtJJAtxzWUe%2FQAHtRHz282cBIjNjRH7uHAwnGVakNet%2BwrsiJ6M6%2BC1LBnxSeDeWk1zwKgUt7h5QuTAvppkRpX1252Updb6QG0dUZZB55OQW%2FCMK7UVGUTjnCbTIXoL%2FVhbyJM1YEJSQ4wPH7arxOmrPf33lllRdv6y0hElDJcdyEEBkegH",
+      "domain": ".vplayed.com",
+      "path": "/",
+      "expires": 1823272777,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://staginggs.vplayed.com",
+      "localStorage": [
+        {
+          "name": "isPushNotificationsEnabled",
+          "value": "false"
+        },
+        {
+          "name": "is_default_profile",
+          "value": "1"
+        },
+        {
+          "name": "auto_play_next_episode",
+          "value": "true"
+        },
+        {
+          "name": "logo_dark_url",
+          "value": "https://gsvp-qa.s3.ap-south-1.amazonaws.com/gudsho-upload-logo-images/05-10-2026/1791201217470-unique_logo_01214369_6532.avif"
+        },
+        {
+          "name": "device_uuid",
+          "value": "8e276d5ad98e2386776a1541a5fee221"
+        },
+        {
+          "name": "isOptedOut",
+          "value": "false"
+        },
+        {
+          "name": "fbapc_620970445190807",
+          "value": "{\"config\":{\"fedcmDefault\":false},\"expiresAt\":1791823165423}"
+        },
+        {
+          "name": "auto_play_preview",
+          "value": "true"
+        },
+        {
+          "name": "geoCountryCode",
+          "value": "IN"
+        },
+        {
+          "name": "themePreference",
+          "value": "dark"
+        },
+        {
+          "name": "profile_id",
+          "value": "6a97a411916094c5e5e6e420"
+        },
+        {
+          "name": "maturity_rating",
+          "value": "4"
+        },
+        {
+          "name": "profile_picture",
+          "value": ""
+        },
+        {
+          "name": "os_pageViews",
+          "value": "1"
+        },
+        {
+          "name": "lcp_banner_url",
+          "value": "https://gsvp-qa.s3.ap-south-1.amazonaws.com/gudsho-upload-video-banner-images/29-09-2026/1790694566655-web-blob.avif"
+        },
+        {
+          "name": "useremail",
+          "value": "rohith8056@gmail.com"
+        },
+        {
+          "name": "vplayed-push-beta",
+          "value": "false"
+        },
+        {
+          "name": "vplayed-inapp-beta",
+          "value": "true"
+        },
+        {
+          "name": "userVideoQuality",
+          "value": "3"
+        },
+        {
+          "name": "browser_uuid",
+          "value": "6872b7cf-9f6d-4ee2-a5ec-1d6588858313"
+        },
+        {
+          "name": "gudUser",
+          "value": "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"
+        },
+        {
+          "name": "currentLanguage",
+          "value": "en"
+        },
+        {
+          "name": "GEO_LOC_ID",
+          "value": "eyJjaXR5IjoiQ2hlbm5haSIsImNvbnRpbmVudCI6IkFzaWEiLCJjb250aW5lbnRDb2RlIjoiQVMiLCJjb3VudHJ5IjoiSW5kaWEiLCJjb3VudHJ5Q29kZSI6IklOIiwiY3VycmVuY3kiOiJJTlIiLCJtb2JpbGUiOmZhbHNlLCJwcm94eSI6ZmFsc2UsInF1ZXJ5IjoiMjIzLjE3OC44MC4xNiIsInJlZ2lvbiI6IlROIiwicmVnaW9uTmFtZSI6IlRhbWlsIE5hZHUiLCJzdGF0dXMiOiJzdWNjZXNzIiwidGltZXpvbmUiOiJBc2lhL0tvbGthdGEifQ=="
+        },
+        {
+          "name": "logo_light_url",
+          "value": "https://gsvp-qa.s3.ap-south-1.amazonaws.com/gudsho-upload-logo-images/05-10-2026/1791201216673-unique_logo_01214331_3991.avif"
+        },
+        {
+          "name": "profile_name",
+          "value": "Rohith"
+        }
+      ]
+    }
+  ]
+}

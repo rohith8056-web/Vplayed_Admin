@@ -16,8 +16,8 @@ export const test = base.extend({
 
   admanagementdatafixture: async ({}, use) => {
     const testdata = await readCSV("testdata/admanagement.csv");
-    await use(testdata); // for this we need to use logindatafixture[0]
-    //await use({ testdata }); for this we need to use logindatafixture.testdata[0]
+    await use(testdata); // for this we need to use admanagementdatafixture[0]
+    //await use({ testdata }); for this we need to use admanagementdatafixture.testdata[0]
   }
   
 });
