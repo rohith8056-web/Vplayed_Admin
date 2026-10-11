@@ -19,26 +19,79 @@ const TOKEN_PATH = resolvePath([
     path.join(process.cwd(), 'downloads', 'token.json')
 ]);
 
+function readJsonFileIfExists(filePath) {
+    if (!filePath || !fs.existsSync(filePath)) {
+        return null;
+    }
+
+    try {
+        return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    } catch (error) {
+        console.warn(`Unable to read JSON from ${filePath}: ${error.message}`);
+        return null;
+    }
+}
+
+export function resolveGmailAuthConfig() {
+    const credentialsJson = process.env.GMAIL_CREDENTIALS_JSON;
+    const tokenJson = process.env.GMAIL_TOKEN_JSON;
+
+    const credentials = credentialsJson
+        ? JSON.parse(credentialsJson)
+        : readJsonFileIfExists(CREDENTIALS_PATH);
+
+    const token = tokenJson
+        ? JSON.parse(tokenJson)
+        : readJsonFileIfExists(TOKEN_PATH);
+
+    const installed = credentials?.installed || credentials || {};
+    const clientId = process.env.GMAIL_CLIENT_ID || installed.client_id || installed.clientId;
+    const clientSecret = process.env.GMAIL_CLIENT_SECRET || installed.client_secret || installed.clientSecret;
+    const redirectUri = process.env.GMAIL_REDIRECT_URI || installed.redirect_uris?.[0] || 'http://localhost';
+    const refreshToken = process.env.GMAIL_REFRESH_TOKEN || token?.refresh_token || token?.refreshToken;
+    const accessToken = process.env.GMAIL_ACCESS_TOKEN || token?.access_token || token?.accessToken;
+
+    if (!clientId || !clientSecret) {
+        throw new Error(
+            'Missing Gmail OAuth credentials. Set GMAIL_CLIENT_ID and GMAIL_CLIENT_SECRET, or provide GMAIL_CREDENTIALS_JSON.'
+        );
+    }
+
+    if (!refreshToken && !accessToken) {
+        throw new Error(
+            'Missing Gmail OAuth token. Set GMAIL_REFRESH_TOKEN or GMAIL_ACCESS_TOKEN, or provide GMAIL_TOKEN_JSON.'
+        );
+    }
+
+    return {
+        clientId,
+        clientSecret,
+        redirectUri,
+        refreshToken,
+        accessToken,
+        token: token || {
+            refresh_token: refreshToken,
+            access_token: accessToken
+        }
+    };
+}
+
 /**
  * Create authenticated Gmail client
  */
 async function getGmailClient() {
 
-    const credentials = JSON.parse(
-        fs.readFileSync(CREDENTIALS_PATH, 'utf8')
-    );
-
-    const token = JSON.parse(
-        fs.readFileSync(TOKEN_PATH, 'utf8')
-    );
-
-    const { client_id, client_secret, redirect_uris } =
-        credentials.installed;
+    const {
+        clientId,
+        clientSecret,
+        redirectUri,
+        token
+    } = resolveGmailAuthConfig();
 
     const auth = new google.auth.OAuth2(
-        client_id,
-        client_secret,
-        redirect_uris[0]
+        clientId,
+        clientSecret,
+        redirectUri
     );
 
     auth.setCredentials(token);
@@ -110,6 +163,10 @@ export async function getLatestOTP({
     const gmail = await getGmailClient();
 
     let query = 'in:anywhere newer_than:7d';
+
+    if (afterTimestamp) {
+        query += ` after:${Math.floor(afterTimestamp / 1000)}`;
+    }
 
     if (sender) {
         query += ` from:${sender}`;
@@ -211,20 +268,26 @@ export async function getLatestOTP({
         );
     }
 
+    const recentOtpEmails = afterTimestamp
+        ? otpEmails.filter(email => email.receivedTime >= afterTimestamp)
+        : otpEmails;
+
+    const candidateEmails = recentOtpEmails.length > 0 ? recentOtpEmails : otpEmails;
+
     /*
      * Prefer context-matched OTPs over fallback matches, then sort
      * newest first within each group. If the request-time filter removed
      * the real OTP email, we still keep the newest valid match so it can
      * be used instead of failing arbitrarily.
      */
-    otpEmails.sort((a, b) => {
+    candidateEmails.sort((a, b) => {
         if (a.matchType !== b.matchType) {
             return a.matchType === 'context' ? -1 : 1;
         }
         return b.receivedTime - a.receivedTime;
     });
 
-    const latestEmail = otpEmails[0];
+    const latestEmail = candidateEmails[0];
 
     console.log(
         `Latest OTP email received: ${latestEmail.receivedDate} (match: ${latestEmail.matchType})`
@@ -284,7 +347,7 @@ export async function waitForLatestOTP({
     sender = '',
     subject = '',
     afterTimestamp,
-    timeout = 120000,
+    timeout = 60000,
     pollingInterval = 5000
 } = {}) {
 

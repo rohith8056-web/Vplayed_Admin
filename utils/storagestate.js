@@ -19,12 +19,11 @@ export class storagestate {
       await storagestatepage.getByRole('button', { name: /sign in|log in/i }).click();
     
       await storagestatepage.locator('input[type="email"]').first().fill(email);
+      const otpRequestTime = Date.now();
       await storagestatepage.getByRole('button', { name: /continue/i }).click();
       await storagestatepage.waitForTimeout(7000);
     
-      const otpRequestTime = Date.now();
-    
-      console.log('OTP requested...');
+      console.log('OTP requested...', new Date(otpRequestTime).toISOString());
     
       const otp = await waitForLatestOTP({
         sender: 'developer.vplay@gmail.com',

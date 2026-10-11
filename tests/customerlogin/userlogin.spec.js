@@ -8,7 +8,7 @@ let page;
 test.beforeAll(async ({ browser }) => {
   test.setTimeout(100000);
   storageState = new storagestate(browser);
-  contextwithstate = await storageState.setstoragestateforcontext('https://staginggs.vplayed.com', 'rohith8056@gmail.com');
+  contextwithstate = await storageState.setstoragestateforcontext('https://staginggs.vplayed.com', 'jackel1275@gmail.com');
 });
 
 test.beforeEach(async () => {
@@ -19,6 +19,6 @@ test.beforeEach(async () => {
 test('Login with OTP for customer', async () => {
 await page.goto('https://staginggs.vplayed.com/category/movies');
 await page.waitForTimeout(3000);
-expect(page.url()).toContain('https://staginggs.vplayed.com/category/movies');
+expect(page.url()).toBe('https://staginggs.vplayed.com/category/movies');
 
 });
