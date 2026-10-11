@@ -12,6 +12,8 @@ jobs:
         include:
           - name: login
             spec: tests/login/login.spec.js
+          - name: customerlogin
+            spec: tests/customerlogin/userlogin.spec.js
           - name: forgetpassword
             spec: tests/forgetpassword/forgetpassword.spec.js
           - name: admanagement
