@@ -6,9 +6,10 @@ let storageState;
 let page;
 
 test.beforeAll(async ({ browser }) => {
+  test.setTimeout(100000);
   storageState = new storagestate(browser);
   contextwithstate = await storageState.setstoragestateforcontext('https://staginggs.vplayed.com', 'rohith8056@gmail.com');
-}, 150000);
+});
 
 test.beforeEach(async () => {
   page = await contextwithstate.newPage();
