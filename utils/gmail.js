@@ -154,14 +154,11 @@ function extractOTP(text) {
  * @param {string} options.subject - Optional subject text
  * @param {number} options.afterTimestamp - Only consider emails received after this time (ms since epoch, matches Gmail internalDate)
  */
-export async function getLatestOTP({
+export function buildGmailQuery({
     sender = 'developer.vplay@gmail.com',
     subject = 'Vplayed-One Time Password (OTP) Confirmation',
     afterTimestamp = 0
 } = {}) {
-
-    const gmail = await getGmailClient();
-
     let query = 'in:anywhere newer_than:7d';
 
     if (afterTimestamp) {
@@ -173,18 +170,41 @@ export async function getLatestOTP({
     }
 
     if (subject) {
-        query += ` subject:"${subject}"`;
+        query += ' subject:OTP';
     }
 
+    return query;
+}
+
+export async function getLatestOTP({
+    sender = 'developer.vplay@gmail.com',
+    subject = 'Vplayed-One Time Password (OTP) Confirmation',
+    afterTimestamp = 0
+} = {}) {
+
+    const gmail = await getGmailClient();
+
+    let query = buildGmailQuery({ sender, subject, afterTimestamp });
     console.log(`Gmail search query: ${query}`);
 
-    const response = await gmail.users.messages.list({
+    let response = await gmail.users.messages.list({
         userId: 'me',
         q: query,
         maxResults: 50
     });
 
-    const messages = response.data.messages || [];
+    let messages = response.data.messages || [];
+
+    if (messages.length === 0 && (sender || subject)) {
+        const fallbackQuery = 'in:anywhere newer_than:7d';
+        console.log(`Retrying with broader Gmail query: ${fallbackQuery}`);
+        response = await gmail.users.messages.list({
+            userId: 'me',
+            q: fallbackQuery,
+            maxResults: 100
+        });
+        messages = response.data.messages || [];
+    }
 
     if (messages.length === 0) {
         throw new Error('No OTP emails found in Spam');
@@ -224,9 +244,13 @@ export async function getLatestOTP({
             const headers = email.data.payload?.headers || [];
             const headersSubject = headers.find(h => h.name.toLowerCase() === 'subject')?.value || '';
             const headersFrom = headers.find(h => h.name.toLowerCase() === 'from')?.value || '';
+            const normalizedSubject = (subject || '').toLowerCase().replace(/[^a-z0-9]/g, ' ');
+            const normalizedHeadersSubject = headersSubject.toLowerCase().replace(/[^a-z0-9]/g, ' ');
             const senderMatches =
                 (!sender || headersFrom.toLowerCase().includes(sender.toLowerCase())) &&
-                (!subject || headersSubject.toLowerCase().includes(subject.toLowerCase().replace(/[()]/g, '')) ||
+                (!subject ||
+                    normalizedHeadersSubject.includes(normalizedSubject) ||
+                    normalizedHeadersSubject.includes('otp') ||
                     combinedText.toLowerCase().includes('otp') ||
                     combinedText.toLowerCase().includes('verification'));
 

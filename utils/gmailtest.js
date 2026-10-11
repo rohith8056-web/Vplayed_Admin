@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { resolveGmailAuthConfig } from './gmail.js';
+import { buildGmailQuery, resolveGmailAuthConfig } from './gmail.js';
 
 test('resolveGmailAuthConfig prefers GitHub Actions env secrets', () => {
   process.env.GMAIL_CLIENT_ID = 'ci-client-id';
@@ -19,4 +19,17 @@ test('resolveGmailAuthConfig prefers GitHub Actions env secrets', () => {
   delete process.env.GMAIL_CLIENT_SECRET;
   delete process.env.GMAIL_REFRESH_TOKEN;
   delete process.env.GMAIL_ACCESS_TOKEN;
+});
+
+test('buildGmailQuery uses a broader OTP subject match for CI', () => {
+  const query = buildGmailQuery({
+    sender: 'developer.vplay@gmail.com',
+    subject: 'Vplayed-One Time Password (OTP) Confirmation',
+    afterTimestamp: 1000
+  });
+
+  assert.match(query, /in:anywhere/);
+  assert.match(query, /after:\d+/);
+  assert.match(query, /from:developer\.vplay@gmail\.com/);
+  assert.match(query, /subject:OTP/i);
 });
