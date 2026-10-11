@@ -38,7 +38,7 @@
     "TC09":{
         "email":"admingsvplayd@gmail.com",
         "password":"Welcome@123",
-        "assert":"The email you have given is not registered with us, Please try again or create a new account"
+        "assert":"× This email is not registered. Please try again or create a new account. "
     },
 
     "TC10":{

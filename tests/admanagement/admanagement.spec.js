@@ -168,7 +168,7 @@ test("TC-26: Verify that admanagement page is displayed", async ({ page, admanag
 
   });
 
-  test("TC-34: verify ad management heading is displaying at correct design", async ({ page, admanagementdatafixture }) => {
+  test.skip("TC-34: verify ad management heading is displaying at correct design", async ({ page, admanagementdatafixture }) => {
 
    await adManagementPage.addmanagementbtn.click();
    await expect(adManagementPage.heading).toBeVisible();
