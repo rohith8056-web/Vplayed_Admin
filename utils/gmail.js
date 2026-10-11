@@ -284,7 +284,7 @@ export async function waitForLatestOTP({
     sender = '',
     subject = '',
     afterTimestamp,
-    timeout = 60000,
+    timeout = 120000,
     pollingInterval = 5000
 } = {}) {
 
